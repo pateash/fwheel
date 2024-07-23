@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: fwheel
+Version: 0.0.1.dev0
+Summary: generate fat wheel similar to fat jar in java
+Author: Ashish Patel
+Author-email: ashishpatel0720@gmail.com
+License: MIT
+License-File: LICENSE
+
+=========
+Fat Wheel
+=========
+
+Fat Wheel are basically wheels which include dependencies inside whl/tar/egg distribution
+similar in java we build a fat jar and run app from jar which have deps in inside the jar
+Fat Wheel try to solve to problems.
+
+1. you just build the fwheel and install and run it
+2. as dist have same deps inside when built and same deps install on use site
+3. share code and install deps when have no internet connection(which is not a problem today ;-))
+
+
+Usage
+*****
+
+1. install fwheel
+
+.. code-block:: text
+
+    pip install fwheel
+
+2. run ``fatwheel`` in cmd and run it project root dir and press enter
+
+::
+
+    fatwheel
+
+3. it will generate a local copy of project with deps and build whl/sdist/egg dist
+4. use whl/tar/egg dist and install
+5. it will install and create a cli command, command name is same as root_pkg name
+
+not supported yet
+~~~~~~~~~~~~~~~~~
+1. currently only support flat-layout means root pkg in project root dir
+
+::
+
+    project-root-dir
+     |
+     |--pkg
+     |   |--__init__.py
+     |   |....
+     |....
+
+
+
+2. not include package data and datafiles(no sync with project setup.py)
