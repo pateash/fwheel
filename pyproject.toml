@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "fwheel"
 dynamic = ["version"]
-description = ''
+description = 'fwheel generates fat wheel similar to fat jar in java'
 readme = "README.md"
 requires-python = ">=3.8"
 license = "MIT"
@@ -27,21 +27,9 @@ classifiers = [
 
 dependencies = [
     "click",
-    "click-repl",
-    "croniter",
-    "cron-descriptor",
     "rich",
-    "cryptography",
-    "Faker",
-    "pandas", #To manage data and save in CSV, Excel, and Parquet formats.
-    "openpyxl", # For handling Excel files with Pandas.
-    "xlrd",
-    "pyarrow", # For saving data in Parquet format.
-    "fastavro", # For handling Avro file format.
-    "requests",
-#    "tomli",
+    "tomli",
     "packaging",
-    "kubernetes",
     "yaspin"
 ]
 
