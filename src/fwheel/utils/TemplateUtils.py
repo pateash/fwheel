@@ -1,3 +1,5 @@
+import logging
+
 import jinja2
 import pkginfo
 import os
@@ -11,10 +13,16 @@ TEMPLATE_FOLDER = joinpath(parent_dir(__file__), "template")
 class TemplateWriter:
 
     def __init__(self):
+        logging.debug("Creating template writer")
         template_loader = jinja2.FileSystemLoader(searchpath=TEMPLATE_FOLDER)
         template_env = jinja2.Environment(loader=template_loader)
-        self.runner_py_template = template_env.get_template("runner.py")
+        logging.debug(f"template_env {template_env}")
+        self.runner_py_template = template_env.get_template("../template/runner.py")
+        logging.debug("Creating template writer1")
         self.setup_py_template = template_env.get_template("setup.txt")
+        logging.debug("Creating template writer2")
+
+        logging.debug("Creating template Done")
 
     def write_setup_py(self, options: SetupPyData, dest=""):
         before_setups = options.get_before_setup()

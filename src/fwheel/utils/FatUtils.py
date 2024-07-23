@@ -20,6 +20,7 @@ def fat_builder(project_dir, pkg_name, version, options):
     logging.debug("Fat Builder called")
     writer = TemplateWriter()
     project = Project.build(project_dir, pkg_name, version)
+    logging.debug(f"root_dir {project}")
     setup_py_data = SetupPyData.build_setup_py_meta_data(
         project.root_dir, project.pkg_name, project.version
     )

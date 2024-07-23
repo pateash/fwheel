@@ -1,3 +1,4 @@
+import logging
 from enum import Enum
 
 from .CoreUtils import (
@@ -61,9 +62,11 @@ class Project:
 
     @classmethod
     def build(cls, root_dir, pkg_name, version):
+        logging.debug("Project.build() called")
         if root_dir.strip().__eq__(""):
             root_dir = getcwd()
         root_dir = getabspath(root_dir)
+        logging.debug(f"root_dir {root_dir}")
         name = parent_dir_name(root_dir)
         project_config_path = ProjectConfigPath(root_dir)
         if not is_pkg(root_dir, pkg_name):

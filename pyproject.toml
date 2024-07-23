@@ -30,7 +30,11 @@ dependencies = [
     "rich",
     "tomli",
     "packaging",
-    "yaspin"
+    "yaspin",
+    "requests",
+    "jinja2",
+    "pkginfo",
+    "pyyaml"
 ]
 
 [project.urls]

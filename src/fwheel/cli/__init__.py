@@ -1,7 +1,6 @@
 import logging
 
 import click
-from click_repl import register_repl  # type: ignore
 
 from .info import info
 from ..__about__ import __version__
