@@ -1,0 +1,20 @@
+{%- for before_setup in before_setups.value %}
+{{before_setup}}
+{%- endfor %}
+
+setup(
+    {%- for option in options %}
+    {%- if option.atype == "str" %}
+    {{option.arg}}="{{option.value}}",
+    {%- elif option.atype == "from_file" %}
+{{option.value}}
+    {%- else %}
+    {{option.arg}}={{option.value}},
+    {%- endif %}
+    {%- endfor %}
+)
+
+
+{% for after_setup in after_setups.value %}
+{{after_setup}}
+{%- endfor %}
