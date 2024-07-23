@@ -21,9 +21,11 @@ class TemplateWriter:
         after_setups = options.get_after_setup()
         setup_options = options.get_setup_options()
         file_path = joinpath(dest, "setup.py")
-        data = self.setup_py_template.render(before_setups=before_setups,
-                                             options=setup_options,
-                                             after_setups=after_setups)
+        data = self.setup_py_template.render(
+            before_setups=before_setups,
+            options=setup_options,
+            after_setups=after_setups,
+        )
         self.__write(file_path, data)
 
     def write_runner_py(self, dest=""):

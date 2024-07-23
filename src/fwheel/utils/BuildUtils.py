@@ -16,7 +16,7 @@ class BuildOption(NamedTuple):
     fat_op_present: bool
 
 
-def get_build_options(wheel,egg,build,fat_wheel,fat_build):
+def get_build_options(wheel, egg, build, fat_wheel, fat_build):
     fat_options = []
     basic_options = []
     if wheel:

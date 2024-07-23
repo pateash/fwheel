@@ -1,7 +1,15 @@
 from enum import Enum
 
-from .CoreUtils import joinpath, path_exits, PATH_SEPARATOR, getcwd, getabspath, parent_dir_name, \
-    extract_deps, is_pkg
+from .CoreUtils import (
+    joinpath,
+    path_exits,
+    PATH_SEPARATOR,
+    getcwd,
+    getabspath,
+    parent_dir_name,
+    extract_deps,
+    is_pkg,
+)
 
 
 class ProjectConfigs(Enum):
@@ -15,9 +23,15 @@ class ProjectConfigPath:
 
     def __init__(self, root_dir):
         self.setup_py_path = joinpath(root_dir, ProjectConfigs.SETUP_PY.value)
-        self.fat_wheel_yaml_path = joinpath(root_dir, ProjectConfigs.FAT_WHEEL_YAML.value)
-        self.py_project_yaml_path = joinpath(root_dir, ProjectConfigs.PY_PROJECT_YAML.value)
-        self.requirements_txt_path = joinpath(root_dir, ProjectConfigs.REQUIREMENTS_TXT.value)
+        self.fat_wheel_yaml_path = joinpath(
+            root_dir, ProjectConfigs.FAT_WHEEL_YAML.value
+        )
+        self.py_project_yaml_path = joinpath(
+            root_dir, ProjectConfigs.PY_PROJECT_YAML.value
+        )
+        self.requirements_txt_path = joinpath(
+            root_dir, ProjectConfigs.REQUIREMENTS_TXT.value
+        )
 
     def setup_py_exists(self):
         return path_exits(self.setup_py_path)

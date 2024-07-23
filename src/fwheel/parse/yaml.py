@@ -4,7 +4,11 @@ import yaml
 def writer(*args, **kwargs):
     file_name = kwargs.get("file_name")
     data = kwargs.get("data")
-    mode = "w" if kwargs.get("mode") is None or kwargs.get("mode") not in ["a", "w"] else kwargs.get("mode")
+    mode = (
+        "w"
+        if kwargs.get("mode") is None or kwargs.get("mode") not in ["a", "w"]
+        else kwargs.get("mode")
+    )
     with open(file_name, mode=mode) as yml_file:
         yaml.dump(data, yml_file)
 

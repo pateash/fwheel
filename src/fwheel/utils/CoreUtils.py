@@ -11,12 +11,14 @@ PATH_SEPARATOR = os.sep
 
 def extract_deps(config):
     """read deps from reqirements.txt"""
-    with io.open(config, 'r', encoding='utf-16-le') as c:
+    with io.open(config, "r", encoding="utf-16-le") as c:
         deps = c.read()[1:].splitlines()
-    return list(map(lambda x: x.split("=")[0].lower(), filter(lambda x: len(x) != 1, deps)))
+    return list(
+        map(lambda x: x.split("=")[0].lower(), filter(lambda x: len(x) != 1, deps))
+    )
 
 
-def now(date_format='%Y-%m-%d-%H-%M-%S'):
+def now(date_format="%Y-%m-%d-%H-%M-%S"):
     return datetime.now().strftime(date_format)
 
 
@@ -59,7 +61,9 @@ def getabspath(path):
 def is_pkg(root_dir, pkg_name):
     nested_pkg_list = pkg_name.split(".")
     for i, nested_pkg in enumerate(nested_pkg_list):
-        nested_pkg_path = joinpath(root_dir, PATH_SEPARATOR.join(nested_pkg_list[0: i+1]), "__init__.py")
+        nested_pkg_path = joinpath(
+            root_dir, PATH_SEPARATOR.join(nested_pkg_list[0 : i + 1]), "__init__.py"
+        )
         if not path_exits(nested_pkg_path):
             return False
     return True

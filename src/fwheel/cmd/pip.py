@@ -2,10 +2,14 @@ import os
 from typing import List
 
 INSTALL_PKG_IN_DIR_CMD = "python -m pip install -r requirements.txt -t ."
-DOWNLOAD_WHEEL_CMD = "python -m pip download -r requirements.txt --dest {deps} --no-cache"
+DOWNLOAD_WHEEL_CMD = (
+    "python -m pip download -r requirements.txt --dest {deps} --no-cache"
+)
 FAT_WHEEL_INSTALL = "python -m pip download -r requirements.txt --dest deps --no-cache"
 BUILD_CMD = "python setup.py {build_options}"
-INSTALL_LOCAL_PKG_CMD = "python -m pip install --no-index --find-links=deps -r requirements.txt"
+INSTALL_LOCAL_PKG_CMD = (
+    "python -m pip install --no-index --find-links=deps -r requirements.txt"
+)
 
 
 def download_wheel(path):

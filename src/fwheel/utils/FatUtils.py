@@ -6,6 +6,7 @@ from .TemplateUtils import TemplateWriter
 from ..cmd.pip import download_wheel, build
 from ..parse.config import get_ignore_files
 import logging
+
 DIST = "dist"
 BUILD = "build"
 
@@ -19,7 +20,9 @@ def fat_builder(project_dir, pkg_name, version, options):
     logging.debug("Fat Builder called")
     writer = TemplateWriter()
     project = Project.build(project_dir, pkg_name, version)
-    setup_py_data = SetupPyData.build_setup_py_meta_data(project.root_dir, project.pkg_name, project.version)
+    setup_py_data = SetupPyData.build_setup_py_meta_data(
+        project.root_dir, project.pkg_name, project.version
+    )
     project.set_version(version=setup_py_data.get_version())
     logging.debug(f"Project info {project}")
     print(project)

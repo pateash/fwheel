@@ -6,9 +6,8 @@ from fwheel.cli import build
 from fwheel.__about__ import __version__
 
 parent_directory = Path(__file__).parent
-TEST_PROJECT_PATH = (
-    parent_directory / "resources" / "ashish-libs"
-)
+TEST_PROJECT_PATH = parent_directory / "resources" / "ashish-libs"
+
 
 def test_fwheel():
     runner = CliRunner()

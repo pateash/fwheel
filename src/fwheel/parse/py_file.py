@@ -14,21 +14,21 @@ class SetupPyArg:
 
 
 def parse_dict(data: ast.Dict):
-        result_dict = {}
-        _keys = []
-        for tmp_key in data.keys:
-            if isinstance(tmp_key, ast.Constant):
-                _keys.append(tmp_key.value)
-        for i, key_value in enumerate(data.values):
-            _tmp_values = []
-            for _tmp_value in key_value.elts:
-                if isinstance(_tmp_value, ast.Constant):
-                    _tmp_values.append(_tmp_value.value)
-            if _keys[i] in result_dict.keys():
-                _tmp_values.extend(result_dict.get(_keys[i]))
-            result_dict[_keys[i]] = _tmp_values
+    result_dict = {}
+    _keys = []
+    for tmp_key in data.keys:
+        if isinstance(tmp_key, ast.Constant):
+            _keys.append(tmp_key.value)
+    for i, key_value in enumerate(data.values):
+        _tmp_values = []
+        for _tmp_value in key_value.elts:
+            if isinstance(_tmp_value, ast.Constant):
+                _tmp_values.append(_tmp_value.value)
+        if _keys[i] in result_dict.keys():
+            _tmp_values.extend(result_dict.get(_keys[i]))
+        result_dict[_keys[i]] = _tmp_values
 
-        return result_dict
+    return result_dict
 
 
 def is_setup(node):
@@ -38,21 +38,44 @@ def is_setup(node):
 def extract_setup_args(node):
     current_object = []
     if is_setup(node):
-        current_object.append(SetupPyArg("before_setup", None, "from_file", 0, node.lineno))
+        current_object.append(
+            SetupPyArg("before_setup", None, "from_file", 0, node.lineno)
+        )
         for params in node.value.keywords:
             option = params.arg
             value = params.value
             if option not in ignore_setup_options:
                 if isinstance(value, ast.Str):
-                    current_object.append(SetupPyArg(option, value.s, "str", value.lineno, value.end_lineno))
+                    current_object.append(
+                        SetupPyArg(
+                            option, value.s, "str", value.lineno, value.end_lineno
+                        )
+                    )
                 elif isinstance(value, ast.NameConstant):
-                    current_object.append(SetupPyArg(option, value.value, "bool", value.lineno, value.end_lineno))
+                    current_object.append(
+                        SetupPyArg(
+                            option, value.value, "bool", value.lineno, value.end_lineno
+                        )
+                    )
                 elif isinstance(value, ast.Call):
-                    current_object.append(SetupPyArg(option, value, "from_file", value.lineno, value.end_lineno))
+                    current_object.append(
+                        SetupPyArg(
+                            option, value, "from_file", value.lineno, value.end_lineno
+                        )
+                    )
                 elif isinstance(value, ast.Dict):
                     current_object.append(
-                        SetupPyArg(option, parse_dict(value), "dict", value.lineno, value.end_lineno))
-    current_object.append(SetupPyArg("after_setup", None, "from_file", node.end_lineno, -1))
+                        SetupPyArg(
+                            option,
+                            parse_dict(value),
+                            "dict",
+                            value.lineno,
+                            value.end_lineno,
+                        )
+                    )
+    current_object.append(
+        SetupPyArg("after_setup", None, "from_file", node.end_lineno, -1)
+    )
     return current_object
 
 
@@ -61,15 +84,15 @@ def sync_setup_py(org_setup_py, new_setup_py):
         if param.atype == "from_file":
             print(param.arg)
             if param.arg == "before_setup":
-                param.value = org_setup_py[param.lineno: param.end_lineno-1]
+                param.value = org_setup_py[param.lineno : param.end_lineno - 1]
             elif param.arg == "after_setup":
-                param.value = org_setup_py[param.lineno: len(org_setup_py)]
+                param.value = org_setup_py[param.lineno : len(org_setup_py)]
                 if len(param.value) == 0:
                     param.value.append("\n")
                 else:
                     param.value[-1] = param.value[-1] + "\n"
             else:
-                param.value = org_setup_py[param.lineno-1]
+                param.value = org_setup_py[param.lineno - 1]
 
     for param in new_setup_py:
         for param2 in new_setup_py:
@@ -81,7 +104,7 @@ def sync_setup_py(org_setup_py, new_setup_py):
 
 
 def get_py_file_meta_data(py_file_path):
-    """ api will return list of SetupPyArg"""
+    """api will return list of SetupPyArg"""
     with open(py_file_path, "r") as pyfile:
         setup_lines = pyfile.readlines()
         pyfile.seek(0)

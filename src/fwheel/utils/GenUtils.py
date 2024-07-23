@@ -36,7 +36,9 @@ class SetupPyData:
             elif meta.arg == "entry_points":
                 default_entry_points = False
                 entry_points_list = meta.value.get("console_scripts")
-                entry_points = [f"install-{project_name} = {pkg_name}.deps.runner:install"]
+                entry_points = [
+                    f"install-{project_name} = {pkg_name}.deps.runner:install"
+                ]
                 entry_points_list.extend(entry_points)
             elif meta.arg == "packages":
                 default_find_package = False
@@ -45,11 +47,17 @@ class SetupPyData:
                 default_include_package_data = False
 
         if default_find_package:
-            packages = SetupPyArg("packages", "\tpackages=find_packages()", "from_file", 0, 0)
+            packages = SetupPyArg(
+                "packages", "\tpackages=find_packages()", "from_file", 0, 0
+            )
             meta_data.insert(-1, packages)
 
         if default_entry_points:
-            entry_points_dict = {"console_scripts": [f"install-{project_name} = {pkg_name}.deps.runner:install"]}
+            entry_points_dict = {
+                "console_scripts": [
+                    f"install-{project_name} = {pkg_name}.deps.runner:install"
+                ]
+            }
             entry_points = SetupPyArg("entry_points", entry_points_dict, "dict", 0, 0)
             meta_data.insert(-1, entry_points)
 
@@ -59,7 +67,9 @@ class SetupPyData:
             meta_data.insert(-1, package_data)
 
         if default_include_package_data:
-            include_package_data = SetupPyArg("include_package_data", "\tinclude_package_data=True", "from_file", 0, 0)
+            include_package_data = SetupPyArg(
+                "include_package_data", "\tinclude_package_data=True", "from_file", 0, 0
+            )
             meta_data.insert(-1, include_package_data)
 
         for m in meta_data:

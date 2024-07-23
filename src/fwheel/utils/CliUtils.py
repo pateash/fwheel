@@ -19,6 +19,7 @@ def check_latest_version():
     except requests.RequestException:
         return False, current_version
 
+
 def is_new_version_available(current_version, latest_version):
     current_ver = version.parse(current_version)
     latest_ver = version.parse(latest_version)

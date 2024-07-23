@@ -17,7 +17,16 @@ def get_ignore_files(path):
             if file_folder.name not in include_file_folder:
                 ignore_files.append(file_folder.name)
     else:
-        ignore_files = ["venv", "src", ".idea", "build", ".git", "dist", ".gitignore", "test"]
+        ignore_files = [
+            "venv",
+            "src",
+            ".idea",
+            "build",
+            ".git",
+            "dist",
+            ".gitignore",
+            "test",
+        ]
     return ignore_files
 
 

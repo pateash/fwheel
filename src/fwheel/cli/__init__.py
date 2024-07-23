@@ -10,6 +10,7 @@ from ..utils.CliUtils import check_update
 from ..utils.CoreUtils import path_exits
 from ..utils.FatUtils import fat_builder, simple_builder
 from ..utils.MessageUtils import warning
+
 LOGGING_LEVELS = {
     0: logging.NOTSET,
     # 1: logging.ERROR,
@@ -71,15 +72,30 @@ def cli(
     else:
         check_update()
 
+
 @click.command()
 @click.argument("project_dir")
-@click.option("-p", "--pkg-name", default="", help="project pkg name (example|my.utils|my)")
-@click.option("-v", "--version", default="", help="build source dist without dependencies")
-@click.option("-b", "--build", is_flag=True, help="build source dist without dependencies")
-@click.option("-w", "--wheel", is_flag=True, help="build wheel file without dependencies")
-@click.option("-fb", "--fat-build", is_flag=True,
-              help="create project local copy with dependencies and build source dist")
-@click.option("-fw", "--fat-wheel", is_flag=True, help="build wheel file with all dependencies")
+@click.option(
+    "-p", "--pkg-name", default="", help="project pkg name (example|my.utils|my)"
+)
+@click.option(
+    "-v", "--version", default="", help="build source dist without dependencies"
+)
+@click.option(
+    "-b", "--build", is_flag=True, help="build source dist without dependencies"
+)
+@click.option(
+    "-w", "--wheel", is_flag=True, help="build wheel file without dependencies"
+)
+@click.option(
+    "-fb",
+    "--fat-build",
+    is_flag=True,
+    help="create project local copy with dependencies and build source dist",
+)
+@click.option(
+    "-fw", "--fat-wheel", is_flag=True, help="build wheel file with all dependencies"
+)
 @click.option("-e", "--egg", is_flag=True, help="build egg file without dependencies")
 def build(project_dir, pkg_name, version, build, wheel, fat_build, fat_wheel, egg):
     """This command build fat wheel for project"""
@@ -92,17 +108,22 @@ def build(project_dir, pkg_name, version, build, wheel, fat_build, fat_wheel, eg
         if path_exits(project_dir):
             logging.debug(f"project_dir {project_dir} exists")
             if build_options.fat_op_present:
-                logging.debug(f"build_options.fat_op_present {build_options.fat_op_present} exists")
+                logging.debug(
+                    f"build_options.fat_op_present {build_options.fat_op_present} exists"
+                )
                 fat_builder(project_dir, pkg_name, version, build_options.fat)
             if build_options.basic_op_present:
-                logging.debug(f"build_options.basic_op_present {build_options.basic_op_present} exists")
+                logging.debug(
+                    f"build_options.basic_op_present {build_options.basic_op_present} exists"
+                )
                 simple_builder(project_dir, build_options.basic)
         else:
             print(f"path: {project_dir} does not exist")
     except Exception as e:
         print(e)
 
+
 cli.add_command(build)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()
