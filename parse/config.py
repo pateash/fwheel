@@ -1,6 +1,6 @@
 import os
-from fat_wheel.parse import yaml
-from fat_wheel.utils import parent_dir
+from parse import yaml
+from utils import parent_dir
 
 
 def get_include_files(config_yaml):

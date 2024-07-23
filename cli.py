@@ -1,8 +1,8 @@
 import argparse
 
-from fat_wheel.arg_process import get_build_options
-from fat_wheel.fat import fat_builder, simple_builder
-from fat_wheel.utils import path_exits
+from arg_process import get_build_options
+from fat import fat_builder, simple_builder
+from utils import path_exits
 
 
 def main():

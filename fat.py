@@ -1,11 +1,11 @@
-from fat_wheel.project_model import Project
+from project_model import Project
 
-from fat_wheel.cmd.pip import download_wheel, build
-from fat_wheel.fs import copy, copy2, create_dirs
-from fat_wheel.gen import SetupPyData
-from fat_wheel.parse.config import get_ignore_files
-from fat_wheel.template_writer import TemplateWriter
-from fat_wheel.utils import now, joinpath, scandir, chdir, isdir
+from cmd.pip import download_wheel, build
+from fs import copy, copy2, create_dirs
+from gen import SetupPyData
+from parse.config import get_ignore_files
+from template_writer import TemplateWriter
+from utils import now, joinpath, scandir, chdir, isdir
 
 DIST = "dist"
 BUILD = "build"

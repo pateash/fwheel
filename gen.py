@@ -1,5 +1,5 @@
 import os
-from fat_wheel.parse.py_file import get_py_file_meta_data, SetupPyArg
+from parse.py_file import get_py_file_meta_data, SetupPyArg
 
 
 class SetupPyData:

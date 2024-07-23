@@ -2,8 +2,8 @@ import jinja2
 import pkginfo
 import os
 
-from fat_wheel.gen import SetupPyData
-from fat_wheel.utils import joinpath, parent_dir
+from gen import SetupPyData
+from utils import joinpath, parent_dir
 
 TEMPLATE_FOLDER = joinpath(parent_dir(__file__), "template")
 

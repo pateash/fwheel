@@ -1,6 +1,6 @@
 from enum import Enum
 
-from fat_wheel.utils import joinpath, path_exits, PATH_SEPARATOR, getcwd, getabspath, parent_dir_name, \
+from utils import joinpath, path_exits, PATH_SEPARATOR, getcwd, getabspath, parent_dir_name, \
     extract_deps, is_pkg
 
 
