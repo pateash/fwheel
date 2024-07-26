@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to fwheel's documentation!
-================================
+==================================
 
 .. click:: fwheel.cli:cli
    :prog: fwheel build

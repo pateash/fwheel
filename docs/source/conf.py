@@ -15,7 +15,7 @@ author = 'Ashish'
 
 extensions = [
     'sphinx_click',
-    'notfound.extension',
+    # 'notfound.extension',
     'sphinx_docsearch',
     'sphinx_copybutton',
 ]
