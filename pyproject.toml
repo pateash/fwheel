@@ -113,7 +113,6 @@ dependencies = [
     "shibuya",
     "sphinx-notfound-page",
     "sphinx-copybutton",
-    "cowsay"
 ]
 [tool.hatch.envs.docs.scripts]
 # --pre-build makes sure we get latest changes even if we modify something in
