@@ -11,8 +11,8 @@ PATH_SEPARATOR = os.sep
 
 def extract_deps(config):
     """read deps from reqirements.txt"""
-    with io.open(config, "r", encoding="utf-16-le") as c:
-        deps = c.read()[1:].splitlines()
+    with io.open(config, "r", encoding="utf-8") as c:
+        deps = c.read().splitlines()
     return list(
         map(lambda x: x.split("=")[0].lower(), filter(lambda x: len(x) != 1, deps))
     )

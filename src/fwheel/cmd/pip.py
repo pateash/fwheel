@@ -1,3 +1,4 @@
+import logging
 import os
 from typing import List
 
@@ -27,11 +28,12 @@ def install():
 
 
 def build(options: List[str]):
+    logging.info(f"Running 'python setup.py <OPTIONS>' with options {options}")
     build_option_str = " ".join(options)
     _execute(BUILD_CMD.format(build_options=build_option_str))
 
 
 def _execute(cmd):
-    dir_path = f"~{os.path.basename(os.getcwd())}"
-    print(f"{dir_path}> {cmd}")
+    dir_path = f"{os.path.basename(os.getcwd())}"
+    logging.debug(f"running execute {dir_path}> {cmd}")
     os.system(cmd)

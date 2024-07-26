@@ -24,16 +24,16 @@ def fat_builder(project_dir, pkg_name, version, options):
     setup_py_data = SetupPyData.build_setup_py_meta_data(
         project.root_dir, project.pkg_name, project.version
     )
+    logging.debug(f"setup options: {setup_py_data.setup_options}")
     project.set_version(version=setup_py_data.get_version())
     logging.debug(f"Project info {project}")
-    print(project)
     fat_wheel_build = f"{project.name}-v{project.version}-{now()}"
     fat_wheel_build_path = joinpath(project.root_dir, BUILD, fat_wheel_build)
     create_dirs(fat_wheel_build_path)
     ignored_files = get_ignore_files(project.get_fat_wheel_yaml_path())
-    print(f"Ignored files/folder: {ignored_files}")
+    logging.info(f"Ignored files/folder: {ignored_files}")
     required_files = list(scandir(project.root_dir))
-    print(f"creating project local copy in build/{fat_wheel_build}")
+    logging.info(f"creating project local copy in build/{fat_wheel_build}")
     for file in required_files:
         if file.name not in ignored_files:
             print(file.path)
@@ -43,7 +43,7 @@ def fat_builder(project_dir, pkg_name, version, options):
             else:
                 copy(src=file.path, dst=fat_wheel_build_path)
 
-    print(f"chdir: {fat_wheel_build_path}")
+    logging.info(f"chdir: {fat_wheel_build_path}")
     chdir(fat_wheel_build_path)
     download_wheel(project.get_pkg_path())
     writer.write_runner_py(dest=project.get_pkg_path())

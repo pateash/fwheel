@@ -29,6 +29,7 @@ def test_plibs():
     result = runner.invoke(
         build, ["-p", "prophecy", "/Users/ashishpatel/prophecy-dev/prophecy-python-libs"], catch_exceptions=False
     )
+    print(result.output)
     assert result.exit_code == 0
 
     # these directories must be created
