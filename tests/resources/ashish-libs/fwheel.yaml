@@ -1,0 +1,6 @@
+include:
+  - ashish_libs
+  - setup.py
+  - requirements.txt
+  - doc
+build: wheel
