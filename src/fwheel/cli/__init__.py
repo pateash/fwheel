@@ -5,11 +5,12 @@ import click
 from .info import info
 from ..__about__ import __version__
 from ..utils.BuildUtils import get_build_options
-from ..utils.CliUtils import check_update
+from ..utils.CliUtils import check_update, verbosity
 from ..utils.CoreUtils import path_exits
 from ..utils.FatUtils import fat_builder, simple_builder
 from ..utils.MessageUtils import warning
 
+DEV_ENV = True
 LOGGING_LEVELS = {
     0: logging.NOTSET,
     # 1: logging.ERROR,
@@ -50,6 +51,7 @@ def cli(
     ctx: click.Context,
     verbose: int,
 ):
+    verbose = verbosity(verbose)
     if verbose > 0:
         logging.basicConfig(
             level=(LOGGING_LEVELS.get(verbose, logging.DEBUG)),
@@ -99,10 +101,10 @@ def cli(
 def build(project_dir, pkg_name, version, build, wheel, fat_build, fat_wheel, egg):
     """This command build fat wheel for project"""
     build_options = get_build_options(wheel, egg, build, fat_wheel, fat_build)
-    print(f"Project path: {project_dir}")
-    print(f"Project pkg name: {pkg_name}")
-    print(f"Fat Build options {build_options.fat}")
-    print(f"Fat Build options {build_options.basic}")
+    logging.debug(f"Project path: {project_dir}")
+    logging.debug(f"Project pkg name: {pkg_name}")
+    logging.debug(f"Fat Build options {build_options.fat}")
+    logging.debug(f"Fat Build options {build_options.basic}")
     try:
         if path_exits(project_dir):
             logging.debug(f"project_dir {project_dir} exists")

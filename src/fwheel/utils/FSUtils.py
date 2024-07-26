@@ -1,5 +1,7 @@
+import logging
 import os
 import shutil
+from pathlib import Path
 
 
 def create_dir(dir_path):
@@ -20,6 +22,23 @@ def delete_dir(dir_path, permanent=False, ignore_errors=False):
     else:
         move(dir_path, f"trash/{dir_path.split(os.sep)[-1]}")
 
+
+def check_exists(path: Path, isDir=True):
+    # check if a directory exists
+    if isDir:
+        if path.exists() and path.is_dir():
+            logging.debug(f"The directory {path} exists.")
+            return True
+        else:
+            logging.debug(f"The directory {path} does not exist.")
+            return False
+    else:
+        if path.exists() and path.is_file():
+            logging.debug(f"The file {path} exists.")
+            return True
+        else:
+            logging.debug(f"The file {path} does not exist.")
+            return False
 
 def move(src_dir, dst_dir):
     try:

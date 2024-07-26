@@ -15,7 +15,7 @@ from .CoreUtils import (
 
 class ProjectConfigs(Enum):
     REQUIREMENTS_TXT = "requirements.txt"
-    FAT_WHEEL_YAML = "fat-wheel.yaml"
+    FAT_WHEEL_YAML = "fwheel.yaml"
     PY_PROJECT_YAML = "pyproject.toml"
     SETUP_PY = "setup.py"
 

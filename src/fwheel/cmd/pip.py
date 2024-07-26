@@ -3,9 +3,11 @@ from typing import List
 
 INSTALL_PKG_IN_DIR_CMD = "python -m pip install -r requirements.txt -t ."
 DOWNLOAD_WHEEL_CMD = (
-    "python -m pip download -r requirements.txt --dest {deps} --no-cache"
+    # "python -m pip download -r requirements.txt --dest {deps} --no-cache"
+    "python -m pip download -r requirements.txt --dest {deps}"
 )
-FAT_WHEEL_INSTALL = "python -m pip download -r requirements.txt --dest deps --no-cache"
+# FAT_WHEEL_INSTALL = "python -m pip download -r requirements.txt --dest deps --no-cache"
+FAT_WHEEL_INSTALL = "python -m pip download -r requirements.txt --dest deps"
 BUILD_CMD = "python setup.py {build_options}"
 INSTALL_LOCAL_PKG_CMD = (
     "python -m pip install --no-index --find-links=deps -r requirements.txt"
