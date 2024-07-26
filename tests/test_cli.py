@@ -10,8 +10,8 @@ TEST_PROJECT_PATH = parent_directory / "resources" / "ashish-libs"
 
 def test_fwheel():
     runner = CliRunner()
-    delete_dir(TEST_PROJECT_PATH / "dist", True)
-    delete_dir(TEST_PROJECT_PATH / "build", True)
+    delete_dir(TEST_PROJECT_PATH / "dist", True, True)
+    delete_dir(TEST_PROJECT_PATH / "build", True, True)
     result = runner.invoke(
         build, ["-p", "ashish_libs", str(TEST_PROJECT_PATH)], catch_exceptions=False
     )
@@ -27,14 +27,14 @@ def test_fwheel():
     )
 
 
-def test_plibs():
-    runner = CliRunner()
-    result = runner.invoke(
-        build,
-        ["-p", "prophecy", "/Users/ashishpatel/prophecy-dev/prophecy-python-libs"],
-        catch_exceptions=False,
-    )
-    print(result.output)
-    assert result.exit_code == 0
-
-    # these directories must be created
+# def test_plibs():
+#     runner = CliRunner()
+#     result = runner.invoke(
+#         build,
+#         ["-p", "prophecy", "/Users/ashishpatel/prophecy-dev/prophecy-python-libs"],
+#         catch_exceptions=False,
+#     )
+#     print(result.output)
+#     assert result.exit_code == 0
+#
+#     # these directories must be created

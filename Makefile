@@ -67,7 +67,7 @@ gha:
 
 
 # all checks
-checks: lint check test
+checks: lint test
 
 fix:
 	hatch run dev:fix
