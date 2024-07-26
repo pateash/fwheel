@@ -3,7 +3,6 @@ from ..parse.py_file import get_py_file_meta_data, SetupPyArg
 
 
 class SetupPyData:
-
     def __init__(self):
         self.version = None
         self.before_setup = None

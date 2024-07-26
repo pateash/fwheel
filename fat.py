@@ -1,6 +1,6 @@
 from project_model import Project
 
-from cmd.pip import download_wheel, build
+from cmd_old.pip import download_wheel, build
 from fs import copy, copy2, create_dirs
 from gen import SetupPyData
 from parse.config import get_ignore_files

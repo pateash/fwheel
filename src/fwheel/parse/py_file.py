@@ -4,7 +4,6 @@ ignore_setup_options = ["install_requires"]
 
 
 class SetupPyArg:
-
     def __init__(self, arg, value, atype, lineno, end_lineno):
         self.arg = arg
         self.value = value

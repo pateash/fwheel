@@ -72,10 +72,10 @@ def cli(
         check_update()
 
 
-@click.command()
+@cli.command()
 @click.argument("project_dir")
 @click.option(
-    "-p", "--pkg-name", default="", help="project pkg name (example|my.utils|my)"
+    "-p", "--pkg-name", required=True, help="project pkg name (example|my.utils|my)"
 )
 @click.option(
     "-v", "--version", default="", help="build source dist without dependencies"
@@ -120,9 +120,8 @@ def build(project_dir, pkg_name, version, build, wheel, fat_build, fat_wheel, eg
             print(f"path: {project_dir} does not exist")
     except Exception as e:
         print(e)
+        raise e
 
-
-cli.add_command(build)
 
 if __name__ == "__main__":
     cli()

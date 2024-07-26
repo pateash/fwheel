@@ -21,7 +21,6 @@ class ProjectConfigs(Enum):
 
 
 class ProjectConfigPath:
-
     def __init__(self, root_dir):
         self.setup_py_path = joinpath(root_dir, ProjectConfigs.SETUP_PY.value)
         self.fat_wheel_yaml_path = joinpath(
@@ -51,7 +50,6 @@ class ProjectConfigPath:
 
 
 class Project:
-
     def __init__(self, name, version, pkg_name, root_dir, deps, project_config_path):
         self.name = name
         self.version = version
