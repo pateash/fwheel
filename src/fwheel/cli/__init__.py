@@ -43,7 +43,7 @@ pass_info = click.make_pass_decorator(Info, ensure=True)
     count=True,
     help="Enable verbose output, use -v for INFO and -vv for DEBUG",
 )
-@click.version_option(version=__version__, prog_name="hckr")
+@click.version_option(version=__version__, prog_name="fwheel")
 @click.pass_context
 @pass_info
 def cli(
@@ -63,10 +63,10 @@ def cli(
         )
     _info.verbose = verbose
     if ctx.invoked_subcommand is None:
-        click.secho("hckr ", fg="magenta", bold=True, nl=False)
+        click.secho("fwheel ", fg="magenta", bold=True, nl=False)
         click.secho(f"v{__version__}  ", fg="blue", bold=True, nl=False)
         click.secho(
-            f"https://github.com/hckr-cli/hckr\n", fg="green", bold=True, nl=False
+            f"https://github.com/pateash/fwheel\n", fg="green", bold=True, nl=False
         )
         check_update()
         cli(["-h"])

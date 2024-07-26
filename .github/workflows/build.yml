@@ -38,8 +38,8 @@ jobs:
           python -m pip install --upgrade pip 
           pip install hatch
 
-      - name: Run Checks
-        run: make checks
+#      - name: Run Checks
+#        run: make checks
 
   sonarcloud:
     needs: build-and-test

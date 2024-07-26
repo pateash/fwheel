@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'hckr'
+project = 'fwheel'
 copyright = '2024, Opensource'
 author = 'Ashish'
 
@@ -39,13 +39,13 @@ html_favicon = '_static/favicon.ico'
 # TODO: enhance it https://shibuya.lepture.com/install/
 html_theme_options = {
     "color_mode": "light",  # light or dark
-    "github_url": "https://github.com/hckr-cli/hckr",
-    "discussion_url": "https://github.com/hckr-cli/hckr/discussions",
+    "github_url": "https://github.com/pateash/fwheel",
+    "discussion_url": "https://github.com/pateash/fwheel/discussions",
     "globaltoc_expand_depth": 1,
     "nav_links": [
         {
             "title": "pypi",
-            "url": "https://pypi.org/project/hckr/",
+            "url": "https://pypi.org/project/fwheel/",
             "external": "true"
         },
         {
