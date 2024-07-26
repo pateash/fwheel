@@ -48,26 +48,26 @@ html_theme_options = {
             "url": "https://pypi.org/project/fwheel/",
             "external": "true"
         },
-        {
-            "title": "Join our Slack",
-            "url": "https://join.slack.com/t/hckr-cli/shared_invite/zt-2kpwz39dw-CIVDcv1nGhEnQNLumJxJDQ",
-            "external": "true"
-        },
+        # {
+        #     "title": "Join our Slack",
+        #     "url": "https://join.slack.com/t/hckr-cli/shared_invite/zt-2kpwz39dw-CIVDcv1nGhEnQNLumJxJDQ",
+        #     "external": "true"
+        # },
     ],
-    "light_logo": "_static/hckr-logo-black.png",
-    "dark_logo": "_static/hckr-logo-white.png",
-    # "accent_color": "red",
+    # "light_logo": "_static/hckr-logo-black.png",
+    # "dark_logo": "_static/hckr-logo-white.png",
+    "accent_color": "bronze",
     "announcement": """<div style="text-align: center;">
         <div style="display: inline-block;">
-         Please support the project by starring it on <a href='https://github.com/hckr-cli/hckr/' target="_blank">Github</a>
+         Please support the project by starring it on <a href='https://github.com/pateash/fwheel/' target="_blank">Github</a>
         </div>
     </div>""",
 }
 
 html_context = {
     "source_type": "github",
-    "source_user": "hckr-cli",
-    "source_repo": "hckr",
+    "source_user": "pateash",
+    "source_repo": "fwheel",
     "source_version": "main",  # Optional
     "source_docs_path": "/docs/source/",  # Optional
 }
