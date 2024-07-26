@@ -21,13 +21,18 @@ def test_fwheel():
     assert check_exists(TEST_PROJECT_PATH / "build")
 
     # specific version must be created as well
-    assert check_exists(TEST_PROJECT_PATH / "dist" / "1.0.0" / "ashish_libs-1.0.0-py3-none-any.whl", isDir=False)
+    assert check_exists(
+        TEST_PROJECT_PATH / "dist" / "1.0.0" / "ashish_libs-1.0.0-py3-none-any.whl",
+        isDir=False,
+    )
 
 
 def test_plibs():
     runner = CliRunner()
     result = runner.invoke(
-        build, ["-p", "prophecy", "/Users/ashishpatel/prophecy-dev/prophecy-python-libs"], catch_exceptions=False
+        build,
+        ["-p", "prophecy", "/Users/ashishpatel/prophecy-dev/prophecy-python-libs"],
+        catch_exceptions=False,
     )
     print(result.output)
     assert result.exit_code == 0

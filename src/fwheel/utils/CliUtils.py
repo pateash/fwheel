@@ -34,10 +34,12 @@ def is_new_version_available(current_version, latest_version):
 def verbosity(verbose):
     # this can be used for local testing
     # if this is running on local env
-    if 'ashish' in os.environ.get('HOME', 'default'):  # this is local, so we can use debug
+    if "ashish" in os.environ.get(
+        "HOME", "default"
+    ):  # this is local, so we can use debug
         print("[INFO]: Using DEBUG as this is local env")
         verbose = 2
-    elif 'dev' in __version__:  # this is still 'dev' version lets use 'info'
+    elif "dev" in __version__:  # this is still 'dev' version lets use 'info'
         print("[INFO]: Using INFO as this is dev version")
         verbose = 1
     else:
